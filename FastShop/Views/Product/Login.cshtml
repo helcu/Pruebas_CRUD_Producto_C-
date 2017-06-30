@@ -1,0 +1,72 @@
+﻿
+@model FastShop.Models.User 
+@{
+
+    Layout = null;
+    ViewBag.Title = "FastShop";
+}
+
+<!DOCTYPE html>
+<!-- PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">-->
+<html>
+<head>
+
+    <title>FastShop</title>
+
+   
+    <link href="@Url.Content("~/Content/index.css")" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <div class="container">
+        <h1>FastShop</h1>
+        <div class="login-page">
+            <div class="form">
+                <form id="miform" name="miform" role="form" method="post" action="/Product/Login">
+                    @Html.EditorFor(a => a.user, new
+              {
+                  htmlAttributes = new
+                  {
+                      @id = "user",
+                      @name = "user",
+                      @type = "text",
+                      @placeholder = "Usuario",
+                      @required = "required",
+                      @autofocus = "autofocus",
+                      @oninvalid = "this.setCustomValidity('obligatorio')",
+                      @oninput = "this.setCustomValidity('')"
+                  }
+              })
+
+
+
+                    @Html.EditorFor(a => a.pass, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @id = "pass",
+                           @name = "pass",
+                           @type = "password",
+                           @placeholder = "contraseña",
+                           @required = "required",
+
+                           @oninvalid = "this.setCustomValidity('obligatorio')",
+                           @oninput = "this.setCustomValidity('')"
+                       }
+                   })
+
+                    <button id="btnLogin" type="submit">Iniciar sesión</button>
+                    </form>
+</div>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    
+   
+
+
+</body>
+</html>

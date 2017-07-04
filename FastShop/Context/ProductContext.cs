@@ -19,7 +19,46 @@ namespace FastShop.Context
             obj.pass = "admin";
             ListUser = new List<User>();
             ListUser.Add(obj);
+
+
+            // Default values
+            Product product = new Product();
+            product.Nombre = "Café Exp";
+            product.Descripcion = "café experimentos";
+            product.Categoria = 1;
+            product.Precio = 12;
+            product.ProductoNacional = true;
+            product.Descontinuado = true;
+            Add(product);
+
+            product = new Product();
+            product.Nombre = "Café Pru";
+            product.Descripcion = "café pruebas";
+            product.Categoria = 1;
+            product.Precio = 10;
+            product.ProductoNacional = true;
+            product.Descontinuado = false;
+            Add(product);
+
+            product = new Product();
+            product.Nombre = "Café Yab";
+            product.Descripcion = "café yaba";
+            product.Categoria = 1;
+            product.Precio = 1;
+            product.ProductoNacional = false;
+            product.Descontinuado = true;
+            Add(product);
+
+            product = new Product();
+            product.Nombre = "Café CS";
+            product.Descripcion = "café cishar";
+            product.Categoria = 1;
+            product.Precio = 0.5;
+            product.ProductoNacional = false;
+            product.Descontinuado = true;
+            Add(product);
         }
+
         public static ProductContext Instance
         {
             get
@@ -34,9 +73,10 @@ namespace FastShop.Context
 
 
         public void Add(Product product) {
-
+            product.Id = 1;
+            if (List.Any())
+                product.Id = List[List.Count - 1].Id + 1;
             List.Add(product);
-
         }
 
         public Product find(int? id) {
